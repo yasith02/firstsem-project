@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="b1.css">
+    <title>Your Pharmacy</title>
+</head>
+<body>
+
+    <header class="sticky-header">
+        <div class="logo">
+            <img src="1.png" alt="Your Pharmacy Logo">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="login.html">login</a></li>
+            </ul>
+        </nav>
+    </header>
+    <br><br><br><br><br><br>
+    
+    <div class="container">
+        <div class="form-container">
+            <h2><b>User Login</b></h2>
+            <form id="input-form">
+
+                <label for="username">User Name:</label><br>
+                <input type="text" id="username" name="username"><br><br>
+
+                <label for="email">Gmail address:</label><br>
+                <input type="text" id="email" name="email"><br><br>
+
+                <label for="password">password:</label><br>
+                <input type="password" id="password" name="password"><br><br>
+
+                <label for="repassword">re-password:</label><br>
+                <input type="password" id="repassword" name="repassword"><br><br>
+
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+        <div id="output-container" class="output-container" style="display: none;">
+            <h2>Result</h2>
+            <p id="output-text"></p>
+        </div>
+    </div>
+    <script>
+        document.getElementById('input-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent default form submission
+            
+            var password = document.getElementById('password').value;
+            var repassword = document.getElementById('repassword').value;
+
+            if (password !== repassword) {
+                document.getElementById('output-text').textContent = "Password and re-password do not match. Please try again.";
+            } else {
+                document.getElementById('output-text').textContent = "Login successful.";
+            }
+            
+            // Show the result container
+            document.getElementById('output-container').style.display = 'block';
+        });
+    </script>
+</body>
+</html>
