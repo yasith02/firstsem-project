@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="b1.css">
+    <title>Your Pharmacy</title>
+</head>
+<body>
+
+    <header class="sticky-header">
+        <div class="logo">
+            <img src="1.png" alt="Your Pharmacy Logo">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="login.html">login</a></li>
+            </ul>
+        </nav>
+    </header>
+    <br><br><br><br><br><br><br><br><br><br>
+    
+    <script>
+        document.getElementById('input-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent default form submission
+
+            var name = document.getElementById('name').value;
+            var age = document.getElementById('age').value;
+            var gender = document.getElementById('gender').value;
+            var TotalCholesterol = parseFloat(document.getElementById('TotalCholesterol').value);
+            var NonHDL  = parseFloat(document.getElementById('NonHDL').value);
+            var LDL  = parseFloat(document.getElementById('LDL').value);
+            var HDL  = parseFloat(document.getElementById('HDL').value);
+
+            var outputMessage = "";
+            if (age < 0 || isNaN(age)) {
+                outputMessage += "Invalid age. <br>";
+            }
+
+            if (age < 19){
+                if (TotalCholesterol < 170) {
+                outputMessage += "Your Cholesterol level is normal. <br>";
+            } else if (TotalCholesterol > 170) {
+                outputMessage += "Your Cholesterol level is high.It's crucial to consult a doctor for further evaluation. <br>";
+            }
+            }
+            
+            if (age > 19){
+                if (TotalCholesterol < 125  ) {
+                    outputMessage += "Your Cholesterol level is low.It's crucial to consult a doctor for further evaluation. <br>";
+                } else if (TotalCholesterol < 200 ) {
+                    outputMessage += "Your Cholesterol level is normal. <br>";
+                }else if (TotalCholesterol > 200 ) {
+                    outputMessage += "Your Cholesterol level is high.It's crucial to consult a doctor for further evaluation. <br>";
+                }
+            } 
+
+            if (age < 19){
+                if (NonHDL < 120) {
+                outputMessage += "Your Non-HDL level is normal. <br>";
+            } else if (NonHDL > 120) {
+                outputMessage += "Your Non-HDL level is high.It's crucial to consult a doctor for further evaluation. <br>";
+            }
+            }
+            
+            if (age > 19){
+                if (NonHDL < 130  ) {
+                    outputMessage += "Your Non-HDL level is normal. <br>";
+                }else if (NonHDL > 130 ) {
+                    outputMessage += "Your Non-HDL level is high.It's crucial to consult a doctor for further evaluation. <br>";
+                }
+            } 
+
+            if (age < 19){
+                if (LDL < 100) {
+                outputMessage += "Your LDL level is normal. <br>";
+            } else if (LDL > 100) {
+                outputMessage += "Your LDL level is high.It's crucial to consult a doctor for further evaluation. <br>";
+            }
+            }
+            
+            if (age > 19){
+                if (LDL < 100  ) {
+                    outputMessage += "Your LDL level is good. <br>";
+                }else if (LDL > 100 ) {
+                    outputMessage += "Your LDL level is high.It's crucial to consult a doctor for further evaluation. <br>";
+                }
+            } 
+
+            if (age < 19){
+                if (HDL > 45) {
+                outputMessage += "Your HDL level is good. <br>";
+            } else if (HDL < 45) {
+                outputMessage += "Your HDL level is low.It's crucial to consult a doctor for further evaluation. <br>";
+            }
+            }
+            if (age > 19){
+                if (gender === 'male') {
+                if (HDL > 40  ) {
+                    outputMessage += "Your HDL level is good. <br>";
+                } else if (HDL < 40 ) {
+                    outputMessage += "Your Hemoglobin count is low.It's crucial to consult a doctor for further evaluation. <br>";
+                }
+            } else if (gender === 'female') {
+                if (HDL > 50  ) {
+                    outputMessage += "Your HDL level is good. <br>";
+                } else if (HDL < 50 ) {
+                    outputMessage += "Your HDL count is low.It's crucial to consult a doctor for further evaluation. <br>";
+                }
+            }
+            }
+
+            document.getElementById('output-text').innerHTML = outputMessage;
+            document.getElementById('output-container').style.display = "block";
+        });
+    </script>
+</body>
+</html>
