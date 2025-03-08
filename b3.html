@@ -20,7 +20,45 @@
         </nav>
     </header>
     <br><br><br><br><br><br><br><br><br><br>
-    
+    <div class="container">
+        <div class="form-container">
+            <h2><b>Cholesterol Test</b></h2>
+            <form id="input-form">
+                <label for="name">Name:</label><br>
+                <input type="text" id="name" name="name"><br><br>
+                
+                <label for="age">Age:</label><br>
+                <input type="number" id="age" name="age"><br><br>
+                
+                <label for="gender">Gender:</label><br>
+                <select id="gender" name="gender">
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="other">Other</option>
+                </select><br><br>
+
+                <label for="TotalCholesterol">Total Cholesterol(mg/dL):</label><br>
+                <input type="number" id="TotalCholesterol" name="TotalCholesterol" step="any"><br><br>
+
+                <label for="NonHDL">Non-HDL(mg/dL):</label><br>
+                <input type="number" id="NonHDL" name="NonHDL" step="any"><br><br>
+
+                <label for="LDL">LDL(mg/dL):</label><br>
+                <input type="number" id="LDL" name="LDL" step="any"><br><br>
+
+                <label for="HDL">HDL(mg/dL):</label><br>
+                <input type="number" id="HDL" name="HDL" step="any"><br><br>
+
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+        <br><br>
+
+        <div id="output-container" class="output-container" style="display: none;">
+            <h2>Result</h2>
+            <p id="output-text"></p>
+        </div>
+    </div>
     <script>
         document.getElementById('input-form').addEventListener('submit', function(event) {
             event.preventDefault(); // Prevent default form submission
