@@ -140,7 +140,13 @@
                 } else if (HDL < 40 ) {
                     outputMessage += "Your Hemoglobin count is low.It's crucial to consult a doctor for further evaluation. <br>";
                 }
-           
+            } else if (gender === 'female') {
+                if (HDL > 50  ) {
+                    outputMessage += "Your HDL level is good. <br>";
+                } else if (HDL < 50 ) {
+                    outputMessage += "Your HDL count is low.It's crucial to consult a doctor for further evaluation. <br>";
+                }
+            }
             }
 
             document.getElementById('output-text').innerHTML = outputMessage;
