@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="b1.css">
+    <title>Your Pharmacy</title>
+</head>
+<body>
+
+    <header class="sticky-header">
+        <div class="logo">
+            <img src="1.png" alt="Your Pharmacy Logo">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="login.html">login</a></li>
+            </ul>
+        </nav>
+    </header>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <br><br><br>
+    <div class="container">
+        <div class="form-container">
+            <h2><b>Urine Test Reports</b></h2>
+            <form id="input-form">
+                <label for="name">Name:</label><br>
+                <input type="text" id="name" name="name"><br><br>
+                
+                <label for="age">Age:</label><br>
+                <input type="number" id="age" name="age"><br><br>
+                
+                <label for="gender">Gender:</label><br>
+                <select id="gender" name="gender">
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="other">Other</option>
+                </select><br><br>
+
+                <label for="color">color:</label><br>
+                <select id="color" name="color">
+                    <option value="Yellow">Yellow</option>
+                    <option value="Redorpink">Red or pink</option>
+                    <option value="Brown">Brown</option>
+                </select><br><br>
+
+                <label for="clarity">clarity:</label><br>
+                <select id="clarity" name="clarity">
+                    <option value="Clear">Clear</option>
+                    <option value="Cloudy">Cloudy</option>
+                    <option value="Turbid">Turbid</option>
+                </select><br><br>
+
+                <label for="Specificgravity">Specific gravity:</label><br>
+                <input type="number" id="Specificgravity" name="Specificgravity" step="any"><br><br>
+
+                <label for="pH">pH:</label><br>
+                <input type="number" id="pH" name="pH" step="any"><br><br>
+
+                <label for="Redbloodcells">Red blood cells (WBCs/hpf):</label><br>
+                <input type="number" id="Redbloodcells" name="Redbloodcells" step="any"><br><br>
+
+                <label for="Whitebloodcells">White blood cells(RBCs/hpf):</label><br>
+                <input type="number" id="Whitebloodcells" name="Whitebloodcells" step="any"><br><br>
+
+                <label for="Protein">Protein(mg/d):</label><br>
+                <input type="number" id="Protein" name="Protein" step="any"><br><br>
+
+                <label for="Glucose">Glucose(mg/d):</label><br>
+                <input type="number" id="Glucose" name="Glucose" step="any"><br><br>
+
+                <label for="Urobilinogen">Urobilinogen(mg/dL):</label><br>
+                <input type="number" id="Urobilinogen" name="Urobilinogen" step="any"><br><br>
+
+                <label for="Bilirubin">Bilirubin:</label><br>
+                <select id="Bilirubin" name="Bilirubin">
+                    <option value="Negative">Negative</option>
+                    <option value="Positive">Positive</option>
+                </select><br><br>
+
+                <label for="Ketonebodies">Ketone bodies:</label><br>
+                <select id="Ketonebodies" name="Ketonebodies">
+                    <option value="Negative">Negative</option>
+                    <option value="Trace">Trace</option>
+                    <option value="Small">Small</option>
+                </select><br><br>
+
+                <label for="Leukocyteesterase">Leukocyte esterase:</label><br>
+                <select id="Leukocyteesterase" name="Leukocyteesterase">
+                    <option value="Negative">Negative</option>
+                    <option value="Positive">Positive</option>
+                </select><br><br>
+
+                <label for="Nitrites">Nitrites:</label><br>
+                <select id="Nitrites" name="Nitrites">
+                    <option value="Negative">Negative</option>
+                    <option value="Positive">Positive</option>
+                </select><br><br>
+
+              <button type="submit">Submit</button>
+            </form>
+        </div>
+
+        <div id="output-container" class="output-container" style="display: none;">
+            <h2>Result</h2>
+            <p id="output-text"></p>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('input-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent default form submission
+
+            var name = document.getElementById('name').value;
+            var age = document.getElementById('age').value;
+            var gender = document.getElementById('gender').value;
+            var color  = document.getElementById('color').value;
+            var clarity  = document.getElementById('clarity').value;
+            var Specificgravity  = parseFloat(document.getElementById('Specificgravity').value);
+            var pH  = parseFloat(document.getElementById('pH').value);
+            var Redbloodcells  = parseFloat(document.getElementById('Redbloodcells').value);
+            var Whitebloodcells  = parseFloat(document.getElementById('Whitebloodcells').value);
+            var Protein  = parseFloat(document.getElementById('Protein').value);
+            var Glucose  = parseFloat(document.getElementById('Glucose').value);
+            var Urobilinogen  = parseFloat(document.getElementById('Urobilinogen').value);
+            var Bilirubin  = document.getElementById('Bilirubin').value;
+            var Ketonebodies  = document.getElementById('Ketonebodies').value;
+            var Leukocyteesterase  = document.getElementById('Leukocyteesterase').value;
+            var Nitrites  = document.getElementById('Nitrites').value;
+
+            var outputMessage = "";
+            if (age < 0 || isNaN(age)) {
+                outputMessage += "Invalid age. <br>";
+            }
+
+            if (color === 'Yellow'){
+                outputMessage += "This is the normal range for urine color . <br>";
+            } else if(color === 'Redorpink'){
+                outputMessage += "This can be caused by blood in the urine. It's crucial to consult a doctor for further evaluation . <br>";
+            } else if(color === 'Brown'){
+                outputMessage += "This can indicate dehydration, liver problems, or certain medications. It's crucial to consult a doctor for further evaluation . <br>";
+            }
+
+            if (clarity === 'Clear'){
+                outputMessage += "This is the normal range for urine clarity . <br>";
+            } else if(clarity === 'Cloudy'){
+                outputMessage += " It's crucial to consult a doctor for further evaluation . <br>";
+            } else if(clarity === 'Turbid'){
+                outputMessage += "It's crucial to consult a doctor for further evaluation. <br>";
+            }
+
+            if ( Specificgravity < 1.0005) {
+                outputMessage += "Your Specific gravity  is low. It's crucial to consult a doctor for further evaluation. <br>";
+            } else if (Specificgravity < 1.0030) {
+                outputMessage += "Your Specific gravity level is normal. <br>";
+            } else if (Specificgravity > 1.0030) {
+                outputMessage += "Your Specific gravity is high. It's crucial to consult a doctor for further evaluation. <br>";
+            }
+
+            if ( pH < 4.5) {
+                outputMessage += "Your urin pH  is low. It's crucial to consult a doctor for further evaluation. <br>";
+            } else if (pH < 8.0) {
+                outputMessage += "Your urine pH level is normal. <br>";
+            } else if (pH > 8.0) {
+                outputMessage += "Your urine pH is high. It's crucial to consult a doctor for further evaluation. <br>";
+            }
+
+            if (Redbloodcells < 2) {
+                outputMessage += "Your urine Red blood cells level is normal. <br>";
+            } else if (Redbloodcells > 2) {
+                outputMessage += "Your urine Red blood cells level is high.It's crucial to consult a doctor for further evaluation. <br>";
+            }
+
+            if (Whitebloodcells < 2) {
+                outputMessage += "Your urine White blood cells level is low.It's crucial to consult a doctor for further evaluation. <br>";
+            } else if (Whitebloodcells < 5) {
+                outputMessage += "Your urine White blood cells level is normal. <br>";
+            } else if (Whitebloodcells > 5){
+                outputMessage += "Your urine White blood cells level is high.It's crucial to consult a doctor for further evaluation. <br>";
+            }
+
+            if (Protein < 150) {
+                outputMessage += "Your urine Protein level is normal. <br>";
+            } else if (Protein > 150) {
+                outputMessage += "Your urine Protein is high.It's crucial to consult a doctor for further evaluation. <br>";
+            }
+
+            if (Glucose < 130) {
+                outputMessage += "Your urine Glucose level is normal. <br>";
+            } else if (Glucose > 130) {
+                outputMessage += "Your urine Glucose is high.It's crucial to consult a doctor for further evaluation. <br>";
+            }
+
+            if (Urobilinogen < 0.5) {
+                outputMessage += "Your urine Urobilinogen level is low.It's crucial to consult a doctor for further evaluation. <br>";
+            } else if (Urobilinogen < 1) {
+                outputMessage += "Your urine Urobilinogen level is normal. <br>";
+            } else if (Urobilinogen > 1){
+                outputMessage += "Your urine Urobilinogen level is high.It's crucial to consult a doctor for further evaluation. <br>";
+            }
+
+            if (Bilirubin === 'Negative'){
+                outputMessage += "This is the normal  for urine Bilirubin . <br>";
+            } else if(Bilirubin === 'Positive'){
+                outputMessage += " It's crucial to consult a doctor for further evaluation . <br>";
+            } 
+
+            if (Ketonebodies === 'Negative'){
+                outputMessage += "This is the normal for urine Ketone bodies . <br>";
+            } else if(Ketonebodies === 'Trace'){
+                outputMessage += " It's crucial to consult a doctor for further evaluation . <br>";
+            } else if(Ketonebodies === 'Small'){
+                outputMessage += "It's crucial to consult a doctor for further evaluation. <br>";
+            }
+
+            if (Leukocyteesterase === 'Negative'){
+                outputMessage += "This is the normal for urine Leukocyte esterase . <br>";
+            } else if(Leukocyteesterase === 'Positive'){
+                outputMessage += " It's crucial to consult a doctor for further evaluation . <br>";
+            } 
+
+            if (Nitrites === 'Negative'){
+                outputMessage += "This is the normal for urine Nitrites . <br>";
+            } else if(Nitrites === 'Positive'){
+                outputMessage += " It's crucial to consult a doctor for further evaluation . <br>";
+            } 
+
+            document.getElementById('output-text').innerHTML = outputMessage;
+            document.getElementById('output-container').style.display = "block";
+        });
+    </script>
+</body>
+</html>
+
